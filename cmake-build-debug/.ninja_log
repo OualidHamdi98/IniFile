@@ -1,0 +1,13 @@
+# ninja log v5
+3901	5197	6903352784275241	IniFile.exe	e20bbae7b37961d2
+3	659	6903098644031842	CMakeFiles/IniFile.dir/main.cpp.obj	613d45e6dfeaa786
+7	2676	6903098664144601	CMakeFiles/IniFile.dir/IniFileManager.cpp.obj	d41ab56285fe4fe5
+6	842	6903352740794662	CMakeFiles/core.dir/main.cpp.obj	7a1790ec1ccc795a
+2	2906	6903352761351487	CMakeFiles/core.dir/IniFileManager.cpp.obj	ddcb0496c3cca29
+2906	3901	6903352771385683	libcore.a	e483576b7e8e9ace
+2	1061	6903363025204359	test/CMakeFiles/runGestoreNoteTests.dir/runAllTests.cpp.obj	e82c1139bdbe9b61
+10	1143	6903363026027625	test/lib/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	6b58d3141f12e14c
+7	5902	6903363073532356	test/lib/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	b752cd8720bab3a6
+5903	6828	6903363082867296	test/lib/googletest/libgtestd.a	24a21f3ee39f4c63
+6828	6885	6903363083447440	test/lib/googletest/libgtest_maind.a	ffc306990ed450e8
+6885	8056	6903363095088722	test/runGestoreNoteTests.exe	fc081dd106c0b860
