@@ -2,7 +2,7 @@ C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/CMakeFiles/IniFile.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/CMakeFiles/core.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test/CMakeFiles/runGestoreNoteTests.dir
+C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test/CMakeFiles/runIniFileManagerTests.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test/CMakeFiles/edit_cache.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test/CMakeFiles/rebuild_cache.dir
 C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test/lib/googletest/CMakeFiles/gtest.dir

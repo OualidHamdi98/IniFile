@@ -1,5 +1,5 @@
 //
-// Created by Benefind on 06/11/2022.
+// Created by OualidHamdi on 06/11/2022.
 //
 
 #include "IniFileManager.h"
@@ -43,12 +43,30 @@ bool IniFileManager::save(string fileName, vector<IniStruct>& fileContent)
     return false;
     }
 }
+// trim from left
+inline std::string& ltrim(std::string& s, const char* t = " \t\n\r\f\v")
+{
+    s.erase(0, s.find_first_not_of(t));
+    return s;
+}
+
+// trim from right
+inline std::string& rtrim(std::string& s, const char* t = " \t\n\r\f\v")
+{
+    s.erase(s.find_last_not_of(t) + 1);
+    return s;
+}
 
 void trim(std::string& str)
 {
+    /*
     //regex che individua tutti gli spazi in una stringa
     std::regex r("\\s+");
     str=std::regex_replace(str,r,"");
+     */
+    const char* t = " \t\n\r\f\v";
+        ltrim(rtrim(str, t), t);
+
 }
 
 bool IniFileManager::load(string fileName, vector<IniStruct>& content)
@@ -241,8 +259,6 @@ bool IniFileManager::setSectionComments(string comments, string sectionName, str
                     comments += "\n";
                 //salvo il commento
                 iter->commentsStruct = comments;
-
-
             }
         }
     }
@@ -264,31 +280,31 @@ bool IniFileManager::deleteSection(string section, string fileName)
     return false;
 }
 
-bool IniFileManager::setValue(string key, string value, string section, string fileName)
+bool IniFileManager::addKeyValue(string KeyName, string Value, string SectionName, string FileName)
 {
     vector<IniStruct> content;
 
-    if (load(fileName, content) )
+    if (load(FileName, content) )
     {
-        if(!checkSection(section,fileName))
+        if(!checkSection(SectionName, FileName))
         {
-            IniStruct s = {"",' ',section,"",""};
-            IniStruct r = {"",' ',section,key,value};
+            IniStruct s = {"", ' ', SectionName, "", ""};
+            IniStruct r = {"", ' ', SectionName, KeyName, Value};
             content.push_back(s);
             content.push_back(r);
-            return save(fileName,content);
+            return save(FileName, content);
         }
-        if(!checkKeyValue(section,key,fileName))
+        if(!checkKeyValue(SectionName, KeyName, FileName))
         {
             vector<IniStruct>::iterator iter = content.begin();
             //non faccio altri controlli tanto so che esiste una sezione = section;
-            while(iter->sectionStruct != section)
+            while(iter->sectionStruct != SectionName)
                 iter++;
-            IniStruct r = {"",' ',section,key,value};
+            IniStruct r = {"", ' ', SectionName, KeyName, Value};
             content.insert(iter+1,r);
             //iter.push_back(r);
             //content.insert(iter,r);
-            return save(fileName,content);
+            return save(FileName, content);
         }
     }
     return false;
@@ -301,7 +317,7 @@ bool IniFileManager::commentRecord(enumCharComment cc, string key, string sectio
     if (load(fileName, content))
     {
         vector<IniStruct>::iterator iter = content.begin();
-        while((iter != content.end()) && (iter->sectionStruct != section))
+        while((iter != content.end()) && (iter->sectionStruct != section) || (iter->keyStruct!=key))
                iter++;
         if (iter == content.end()) return false;
         iter->charCommentStruct = cc;
@@ -332,27 +348,27 @@ void IniFileManager::printValue(string key, string section, string fileName)
     if (load(fileName, content))
     {
         vector<IniStruct>::iterator iter = content.begin();
-        while(iter !=  content.end() || (iter->sectionStruct != section && iter->keyStruct != key))
+        while(iter !=  content.end() && (iter->sectionStruct != section || iter->keyStruct != key))
             iter++;
         if (iter != content.end())
-            cout <<"\n value of key : "<<key <<" in section : "<<section<< " is : " << iter->keyStruct ;
+            cout <<"\n value of key : "<<key <<" in section : "<<section<< " is : " << iter->valueStruct ;
         else cout << "\n there is no value for for this section or this key in this file; " ;
     }
 }
 
-bool IniFileManager::deleteRecord(string key, string section, string fileName)
-{
+bool IniFileManager::deleteRecord(string key, string section, string fileName) {
     vector<IniStruct> content;
 
-    if (load(fileName, content))
-    {
+    if (load(fileName, content)) {
         vector<IniStruct>::iterator iter = content.begin();
-        while(iter !=  content.end() || (iter->sectionStruct != section && iter->keyStruct != key))
+        while (iter != content.end() && (iter->sectionStruct != section || iter->keyStruct != key))
             iter++;
-        if (iter == content.end()) return false;
-        content.erase(iter);
-        return save(fileName,content);
-    }
+        if (iter != content.end()) {
+            content.erase(iter);
+            return save(fileName, content);
+            }
+        }
+    cout <<"\n no key has been deleted ";
     return false;
 }
 
@@ -363,7 +379,7 @@ bool IniFileManager::setRecordComments(string comments, string key, string secti
     if (load(fileName, content))
     {
         vector<IniStruct>::iterator iter = content.begin();
-        while(iter !=  content.end() || (iter->sectionStruct != section && iter->keyStruct != key))
+        while(iter !=  content.end() && (iter->sectionStruct != section || iter->keyStruct != key))
             iter++;
 
         if (iter == content.end()) return false;

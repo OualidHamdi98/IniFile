@@ -139,45 +139,52 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for EXECUTABLE target runGestoreNoteTests
+# Object build statements for EXECUTABLE target runIniFileManagerTests
 
 
 #############################################
-# Order-only phony target for runGestoreNoteTests
+# Order-only phony target for runIniFileManagerTests
 
-build cmake_object_order_depends_target_runGestoreNoteTests: phony || cmake_object_order_depends_target_core cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+build cmake_object_order_depends_target_runIniFileManagerTests: phony || cmake_object_order_depends_target_core cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
 
-build test/CMakeFiles/runGestoreNoteTests.dir/runAllTests.cpp.obj: CXX_COMPILER__runGestoreNoteTests_Debug C$:/Users/Benefind/CLionProjects/IniFile/test/runAllTests.cpp || cmake_object_order_depends_target_runGestoreNoteTests
-  DEP_FILE = test\CMakeFiles\runGestoreNoteTests.dir\runAllTests.cpp.obj.d
+build test/CMakeFiles/runIniFileManagerTests.dir/runAllTests.cpp.obj: CXX_COMPILER__runIniFileManagerTests_Debug C$:/Users/Benefind/CLionProjects/IniFile/test/runAllTests.cpp || cmake_object_order_depends_target_runIniFileManagerTests
+  DEP_FILE = test\CMakeFiles\runIniFileManagerTests.dir\runAllTests.cpp.obj.d
   FLAGS = -g -std=gnu++14
   INCLUDES = -IC:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest -isystem C:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest/include
-  OBJECT_DIR = test\CMakeFiles\runGestoreNoteTests.dir
-  OBJECT_FILE_DIR = test\CMakeFiles\runGestoreNoteTests.dir
+  OBJECT_DIR = test\CMakeFiles\runIniFileManagerTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runIniFileManagerTests.dir
 
-build test/CMakeFiles/runGestoreNoteTests.dir/IniFileManagerTest.cpp.obj: CXX_COMPILER__runGestoreNoteTests_Debug C$:/Users/Benefind/CLionProjects/IniFile/test/IniFileManagerTest.cpp || cmake_object_order_depends_target_runGestoreNoteTests
-  DEP_FILE = test\CMakeFiles\runGestoreNoteTests.dir\IniFileManagerTest.cpp.obj.d
+build test/CMakeFiles/runIniFileManagerTests.dir/IniFileManagerTest.cpp.obj: CXX_COMPILER__runIniFileManagerTests_Debug C$:/Users/Benefind/CLionProjects/IniFile/test/IniFileManagerTest.cpp || cmake_object_order_depends_target_runIniFileManagerTests
+  DEP_FILE = test\CMakeFiles\runIniFileManagerTests.dir\IniFileManagerTest.cpp.obj.d
   FLAGS = -g -std=gnu++14
   INCLUDES = -IC:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest -isystem C:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest/include
-  OBJECT_DIR = test\CMakeFiles\runGestoreNoteTests.dir
-  OBJECT_FILE_DIR = test\CMakeFiles\runGestoreNoteTests.dir
+  OBJECT_DIR = test\CMakeFiles\runIniFileManagerTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runIniFileManagerTests.dir
+
+build test/CMakeFiles/runIniFileManagerTests.dir/IniFileFixtureTest.cpp.obj: CXX_COMPILER__runIniFileManagerTests_Debug C$:/Users/Benefind/CLionProjects/IniFile/test/IniFileFixtureTest.cpp || cmake_object_order_depends_target_runIniFileManagerTests
+  DEP_FILE = test\CMakeFiles\runIniFileManagerTests.dir\IniFileFixtureTest.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -IC:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest -isystem C:/Users/Benefind/CLionProjects/IniFile/test/lib/googletest/include
+  OBJECT_DIR = test\CMakeFiles\runIniFileManagerTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runIniFileManagerTests.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target runGestoreNoteTests
+# Link build statements for EXECUTABLE target runIniFileManagerTests
 
 
 #############################################
-# Link the executable test\runGestoreNoteTests.exe
+# Link the executable test\runIniFileManagerTests.exe
 
-build test/runGestoreNoteTests.exe: CXX_EXECUTABLE_LINKER__runGestoreNoteTests_Debug test/CMakeFiles/runGestoreNoteTests.dir/runAllTests.cpp.obj test/CMakeFiles/runGestoreNoteTests.dir/IniFileManagerTest.cpp.obj | test/lib/googletest/libgtestd.a test/lib/googletest/libgtest_maind.a libcore.a test/lib/googletest/libgtestd.a || libcore.a test/lib/googletest/libgtest_maind.a test/lib/googletest/libgtestd.a
+build test/runIniFileManagerTests.exe: CXX_EXECUTABLE_LINKER__runIniFileManagerTests_Debug test/CMakeFiles/runIniFileManagerTests.dir/runAllTests.cpp.obj test/CMakeFiles/runIniFileManagerTests.dir/IniFileManagerTest.cpp.obj test/CMakeFiles/runIniFileManagerTests.dir/IniFileFixtureTest.cpp.obj | test/lib/googletest/libgtestd.a test/lib/googletest/libgtest_maind.a libcore.a test/lib/googletest/libgtestd.a || libcore.a test/lib/googletest/libgtest_maind.a test/lib/googletest/libgtestd.a
   FLAGS = -g
   LINK_LIBRARIES = test/lib/googletest/libgtestd.a  test/lib/googletest/libgtest_maind.a  libcore.a  test/lib/googletest/libgtestd.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = test\CMakeFiles\runGestoreNoteTests.dir
+  OBJECT_DIR = test\CMakeFiles\runIniFileManagerTests.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = test\runGestoreNoteTests.exe
-  TARGET_IMPLIB = test\librunGestoreNoteTests.dll.a
-  TARGET_PDB = runGestoreNoteTests.exe.dbg
+  TARGET_FILE = test\runIniFileManagerTests.exe
+  TARGET_IMPLIB = test\librunIniFileManagerTests.dll.a
+  TARGET_PDB = runIniFileManagerTests.exe.dbg
 
 
 #############################################
@@ -309,9 +316,9 @@ build libgtest_maind.a: phony test/lib/googletest/libgtest_maind.a
 
 build libgtestd.a: phony test/lib/googletest/libgtestd.a
 
-build runGestoreNoteTests: phony test/runGestoreNoteTests.exe
+build runIniFileManagerTests: phony test/runIniFileManagerTests.exe
 
-build runGestoreNoteTests.exe: phony test/runGestoreNoteTests.exe
+build runIniFileManagerTests.exe: phony test/runIniFileManagerTests.exe
 
 # =============================================================================
 # Folder targets.
@@ -328,7 +335,7 @@ build all: phony IniFile.exe libcore.a test/all
 #############################################
 # Folder: C:/Users/Benefind/CLionProjects/IniFile/cmake-build-debug/test
 
-build test/all: phony test/runGestoreNoteTests.exe test/lib/googletest/all
+build test/all: phony test/runIniFileManagerTests.exe test/lib/googletest/all
 
 # =============================================================================
 
