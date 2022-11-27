@@ -15,7 +15,7 @@ IniFileManager::~IniFileManager(void){
     this->save(fileContent);
 }
 
-bool IniFileManager::create(string fileName)
+const bool IniFileManager::create(string &fileName)
 {
     ifstream f(fileName.c_str());
     if (f.good())
@@ -38,7 +38,7 @@ const vector<IniFileManager::IniStruct> &IniFileManager::getFileContent() const 
 
 // crea e salva un nuovo file vuoto
 
-bool IniFileManager::save(vector<IniStruct>& fileContent)
+const bool IniFileManager::save(vector<IniStruct>& fileContent)
 {
     //creo un output str
     //if (!outFile.is_open()) return false;
@@ -93,7 +93,7 @@ void trim(std::string& str)
 
 }
 
-bool IniFileManager::load(string fileName, vector<IniStruct>& content)
+const bool IniFileManager::load(string &fileName, vector<IniStruct>& content)
 {
     string s;
     string CurrentSection;
@@ -163,7 +163,7 @@ bool IniFileManager::load(string fileName, vector<IniStruct>& content)
 
 }
 
-void IniFileManager::printFile()
+const void IniFileManager::printFile()
 {
     string s="";
     //vector<IniStruct> content = this->getFileContent();
@@ -179,7 +179,7 @@ void IniFileManager::printFile()
     cout << s;
 }
 
-void IniFileManager::printAllSection()
+const void IniFileManager::printAllSection()
 {
     vector<string> allSection;
     //vector<IniStruct> content = this->getFileContent();
@@ -198,7 +198,7 @@ void IniFileManager::printAllSection()
                     });
 }
 
-bool IniFileManager::addSection(string sectionName)
+bool IniFileManager::addSection(const string &sectionName)
 {
     // vector<IniStruct> content = this->getFileContent();;
 
@@ -213,7 +213,7 @@ bool IniFileManager::addSection(string sectionName)
     return false;
 }
 
-bool IniFileManager::commentSection(char commentChar, string section)
+bool IniFileManager::commentSection(const char &commentChar,const string &section)
 {
     // vector<IniStruct> content = this->getFileContent();
 
@@ -229,7 +229,7 @@ bool IniFileManager::commentSection(char commentChar, string section)
     return false;
 }
 
-bool IniFileManager::checkKeyValue(string section,string key)
+const bool IniFileManager::checkKeyValue(const string &section,const string &key)
 {
     //vector<IniStruct> content = this->getFileContent();
     vector<IniStruct>::iterator iter = fileContent.begin();
@@ -240,7 +240,7 @@ bool IniFileManager::checkKeyValue(string section,string key)
     return false;
 }
 
-bool IniFileManager::renameSection(string oldName, string newName)
+bool IniFileManager::renameSection(const string &oldName,const string &newName)
 {
     //vector<IniStruct> content = this->getFileContent();
     for(vector<IniStruct>::iterator iter = fileContent.begin();
@@ -248,14 +248,13 @@ bool IniFileManager::renameSection(string oldName, string newName)
     {
         if(iter->sectionStruct == oldName){
             iter->sectionStruct = newName;
-            //this->setFileContent(content);
             return true;
         }
     }
     return false;
 }
 
-bool IniFileManager::setSectionComments(string comments, string sectionName)
+bool IniFileManager::setSectionComments(string comments,const string &sectionName)
 {
     // vector<IniStruct> content = this->getFileContent();
     for(vector<IniStruct>::iterator iter = fileContent.begin(); iter < fileContent.end(); iter++)
@@ -268,14 +267,13 @@ bool IniFileManager::setSectionComments(string comments, string sectionName)
                 comments += "\n";
             //salvo il commento
             iter->commentsStruct = comments;
-            // this->setFileContent(content);
             return true;
         }
     }
     return false;
 }
 
-bool IniFileManager::deleteSection(string section)
+bool IniFileManager::deleteSection(const string &section)
 {
     // vector<IniStruct> content = this->getFileContent();
     for(int i=(int)fileContent.size()-1;i>=0;i--) {
@@ -288,7 +286,8 @@ bool IniFileManager::deleteSection(string section)
     return false;
 }
 
-bool IniFileManager::addKeyValue(string KeyName, string Value, string SectionName)
+
+bool IniFileManager::addKeyValue(const string &KeyName,const string &Value,const string &SectionName)
 {
     //vector<IniStruct> content = this->getFileContent();
     if(!checkSection(SectionName))
@@ -316,7 +315,7 @@ bool IniFileManager::addKeyValue(string KeyName, string Value, string SectionNam
     return false;
 }
 
-bool IniFileManager::commentRecord(enumCharComment cc, string key, string section)
+bool IniFileManager::commentRecord(enumCharComment cc,const string &key,const string &section)
 {
     //vector<IniStruct> content = this->getFileContent();
 
@@ -329,7 +328,19 @@ bool IniFileManager::commentRecord(enumCharComment cc, string key, string sectio
     return true;
 }
 
-bool IniFileManager::checkSection(string sectionName)
+bool IniFileManager::deleteComment(const string &key, const string &section) {
+    vector<IniStruct>::iterator iter = fileContent.begin();
+    while(iter != fileContent.end() && ((iter->sectionStruct != section) || (iter->keyStruct!=key)))
+        iter++;
+    if (iter == fileContent.end()) return false;
+    if(iter->charCommentStruct == hashtag || iter->charCommentStruct == semicolon){
+        iter->charCommentStruct = ' ';
+        return true;
+    }
+    else cout<< "the key was not commented "; return false;
+}
+
+const bool IniFileManager::checkSection(const string &sectionName)
 {
     //vector<IniStruct> content = this->getFileContent();
     vector<IniStruct>::iterator iter = fileContent.begin();
@@ -340,7 +351,7 @@ bool IniFileManager::checkSection(string sectionName)
     return false;
 }
 
-void IniFileManager::printValue(string key, string section)
+const void IniFileManager::printValue(const string &key, const string &section)
 {
     IniStruct data;
     // vector<IniStruct> content = this->getFileContent();
@@ -353,7 +364,8 @@ void IniFileManager::printValue(string key, string section)
 
 }
 
-bool IniFileManager::deleteRecord(string key, string section)
+
+bool IniFileManager::deleteRecord(const string &key,const string &section)
 {
     // vector<IniStruct> content = this->getFileContent();
     vector<IniStruct>::iterator iter = fileContent.begin();
@@ -368,7 +380,7 @@ bool IniFileManager::deleteRecord(string key, string section)
     return false;
 }
 
-bool IniFileManager::setRecordComments(string comments, string key, string section)
+bool IniFileManager::setRecordComments(string comments,const string &key,const string &section)
 {
     // vector<IniStruct> content = this->getFileContent();
 
@@ -394,6 +406,8 @@ const string &IniFileManager::getFileName() const {
 void IniFileManager::setFileName(const string &fileName) {
     IniFileManager::fileName = fileName;
 }
+
+
 
 
 

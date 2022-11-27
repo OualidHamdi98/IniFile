@@ -28,9 +28,11 @@ protected:
 };
 
 TEST_F(IniFileFixtureTest,Delete){
+    ASSERT_TRUE(iniFile->deleteComment("ServerPort", "Connection"));
     ASSERT_TRUE(iniFile->deleteRecord("ServerIp","Connection"));
     ASSERT_FALSE(iniFile->deleteRecord("ServerIp2","Connection"));
     ASSERT_TRUE(iniFile->deleteSection("Connection"));
 }
+
 
 
