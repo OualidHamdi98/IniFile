@@ -27,39 +27,47 @@ public:
         string valueStruct;
     };
 
+    void setFileName(const string &fileName);
+
+    const string &getFileName() const;
+
     enum enumCharComment
     {
         hashtag = '#',
         semicolon = ';'
     };
 
-    IniFileManager(void);
+    IniFileManager(string fileName);
     virtual ~IniFileManager(void);
 
-    static bool create(string fileName);
+    bool addSection(string sectionName);
+    bool addKeyValue(string KeyName, string Value, string SectionName);
+    bool renameSection(string oldName, string newName);
 
-    static bool addSection(string sectionName, string fileName);
-    static bool addKeyValue(string KeyName, string Value, string SectionName, string FileName);
-    static bool renameSection(string oldName, string newName, string fileName);
+    bool commentSection(char commentChar, string section);
+    bool setSectionComments(string comments, string sectionName);
+    bool commentRecord(enumCharComment cc, string key, string section);
+    bool setRecordComments(string comments, string key, string section);
 
-    static bool commentSection(char commentChar, string section, string fileName);
-    static bool setSectionComments(string comments, string sectionName, string fileName);
-    static bool commentRecord(enumCharComment cc, string key, string section, string fileName);
-    static bool setRecordComments(string comments, string key, string section, string fileName);
+    bool checkKeyValue(string section,string key);
+    bool checkSection(string section);
 
-    static bool checkKeyValue(string section,string key, string fileName);
-    static bool checkSection(string section, string fileName);
+    bool deleteSection(string section);
+    bool deleteRecord(string KeyName, string SectionName);
 
-    static bool deleteSection(string section, string fileName);
-    static bool deleteRecord(string KeyName, string SectionName, string FileName);
+    void printFile();
+    void printAllSection();
+    void printValue(string key, string section);
 
-    static void printFile(string fileName);
-    static void printAllSection(string fileName);
-    static void printValue(string key, string section, string fileName);
+    const vector<IniStruct> &getFileContent() const;
+    void setFileContent(const vector<IniStruct> &fileContent);
 
 private:
-    static bool save(string fileName, vector<IniStruct>& content);
-    static bool load(string fileName, vector<IniStruct>& content);
+    string fileName;
+    vector<IniStruct> fileContent;
+    bool save(vector<IniStruct>& content);
+    bool load(string fileName, vector<IniStruct>& content);
+    bool create(string fileName);
 
 };
 
