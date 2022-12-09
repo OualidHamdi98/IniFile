@@ -1,11 +1,13 @@
-#include <iostream>
 #include "IniFileManager.h"
 
 int main() {
     //IniFileManager *iniFile = new IniFileManager("Testing.ini");
-    IniFileManager iniFile("Testing.ini");
 
-    iniFile.addSection("DataBase");
+    IniFileManager iniFile("Carote.ini");
+    iniFile.commentRecord(IniFileManager::enumCharComment::semicolon, "ServerPort", "Connection");
+    (iniFile.deleteComment("ServerPort1","Connection"));
+    iniFile.setSectionComments("","Owner");
+    /*iniFile.addSection("DataBase");
     iniFile.addKeyValue("identifier", "Oualid Hamdi", "Owner");
     iniFile.addKeyValue("SchemaDbTest", "test_db", "DataBase");
     iniFile.addKeyValue("SchemaDbPrd", "prod_db", "DataBase");
@@ -23,7 +25,7 @@ int main() {
     iniFile.deleteRecord("file2.lib","Lib");
     iniFile.printValue("ServerIp","Connection");
     iniFile.deleteSection("Owner");
-    iniFile.commentSection(IniFileManager::enumCharComment::semicolon, "Esami");
+    iniFile.commentSection(IniFileManager::enumCharComment::semicolon, "Esami");*/
 
     //project workflows
 
