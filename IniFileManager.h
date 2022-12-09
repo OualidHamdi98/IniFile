@@ -29,7 +29,7 @@ public:
 
     void setFileName(const string &fileName);
 
-    string getFileName() const;
+    const string &getFileName() const;
 
     enum enumCharComment
     {
@@ -44,19 +44,19 @@ public:
     bool addKeyValue(const string &KeyName,const string &Value,const string &SectionName);
     bool renameSection(const string &oldName,const string &newName);
 
-    bool commentSection(const char &commentChar,const string &section);
-    bool setSectionComments(string comments,const string &sectionName);
+    bool commentSection(char commentChar,const string &section);
+    bool setSectionComments(const string &comments,const string &sectionName);
     bool commentRecord(enumCharComment cc,const string &key,const string &section);
-    bool setRecordComments(string comments,const string &key,const string &section);
+    bool setRecordComments(const string &comments,const string &key,const string &section);
 
 
     bool deleteSection(const string &section);
     bool deleteRecord(const string &KeyName,const string &SectionName);
     bool deleteComment(const string &key,const string &section);
 
-    void printFile();
-    void printAllSection();
-    void printValue(const string &key,const string &section);
+    void printFile() const;
+    void printAllSection() const;
+    void printValue(const string &key,const string &section) const;
 
     const vector<IniStruct> &getFileContent() const;
     void setFileContent(const vector<IniStruct> &fileContent);
@@ -64,11 +64,11 @@ public:
 private:
     string fileName;
     vector<IniStruct> fileContent;
-    const bool save(vector<IniStruct>& content);
+    bool save(vector<IniStruct>& content) const;
     bool load(const string &fileName, vector<IniStruct>& content);
     bool create(const string &fileName);
-    const bool checkKeyValue(const string &section,const string &key);
-    const bool checkSection(const string &section);
+    bool checkKeyValue(const string &section,const string &key) const;
+    bool checkSection(const string &section) const;
 
 };
 
