@@ -163,7 +163,7 @@ const bool IniFileManager::load(string &fileName, vector<IniStruct>& content)
 
 }
 
-const void IniFileManager::printFile()
+void IniFileManager::printFile()
 {
     string s="";
     //vector<IniStruct> content = this->getFileContent();
@@ -179,7 +179,7 @@ const void IniFileManager::printFile()
     cout << s;
 }
 
-const void IniFileManager::printAllSection()
+void IniFileManager::printAllSection()
 {
     vector<string> allSection;
     //vector<IniStruct> content = this->getFileContent();
@@ -351,7 +351,7 @@ const bool IniFileManager::checkSection(const string &sectionName)
     return false;
 }
 
-const void IniFileManager::printValue(const string &key, const string &section)
+void IniFileManager::printValue(const string &key, const string &section)
 {
     IniStruct data;
     // vector<IniStruct> content = this->getFileContent();

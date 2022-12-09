@@ -54,9 +54,9 @@ public:
     bool deleteRecord(const string &KeyName,const string &SectionName);
     bool deleteComment(const string &key,const string &section);
 
-    const void printFile();
-    const void printAllSection();
-    const void printValue(const string &key,const string &section);
+    void printFile();
+    void printAllSection();
+    void printValue(const string &key,const string &section);
 
     const vector<IniStruct> &getFileContent() const;
     void setFileContent(const vector<IniStruct> &fileContent);
