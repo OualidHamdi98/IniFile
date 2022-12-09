@@ -4,7 +4,7 @@
 
 #include "IniFileManager.h"
 
-IniFileManager::IniFileManager(string fileName){
+IniFileManager::IniFileManager(const string &fileName){
     this->setFileName(fileName);
     if (!create(fileName))
         this->load(fileName,fileContent);
@@ -15,7 +15,7 @@ IniFileManager::~IniFileManager(void){
     this->save(fileContent);
 }
 
-const bool IniFileManager::create(string &fileName)
+bool IniFileManager::create(const string &fileName)
 {
     ifstream f(fileName.c_str());
     if (f.good())
@@ -93,7 +93,7 @@ void trim(std::string& str)
 
 }
 
-const bool IniFileManager::load(string &fileName, vector<IniStruct>& content)
+bool IniFileManager::load(const string &fileName, vector<IniStruct>& content)
 {
     string s;
     string CurrentSection;

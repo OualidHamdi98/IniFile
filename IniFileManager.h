@@ -37,7 +37,7 @@ public:
         semicolon = ';'
     };
 
-    IniFileManager(string fileName);
+    IniFileManager(const string &fileName);
     virtual ~IniFileManager(void);
 
     bool addSection(const string &sectionName);
@@ -65,8 +65,8 @@ private:
     string fileName;
     vector<IniStruct> fileContent;
     const bool save(vector<IniStruct>& content);
-    const bool load(string &fileName, vector<IniStruct>& content);
-    const bool create(string &fileName);
+    bool load(const string &fileName, vector<IniStruct>& content);
+    bool create(const string &fileName);
     const bool checkKeyValue(const string &section,const string &key);
     const bool checkSection(const string &section);
 
